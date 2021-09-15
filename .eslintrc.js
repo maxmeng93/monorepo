@@ -4,9 +4,11 @@ module.exports = {
   env: {
     node: true,
   },
-  parser: 'babel-eslint',
-  extends: "eslint:recommended",
+  parser: 'vue-eslint-parser',
+  extends: ['plugin:vue/essential', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  plugins: ['@typescript-eslint'],
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
     sourceType: 'module'
   },

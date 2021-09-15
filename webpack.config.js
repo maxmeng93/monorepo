@@ -12,7 +12,7 @@ module.exports = {
     clean: true,
   },
   resolve: {
-    extensions: ['.ts', '.js', '.vue', '.json'],
+    extensions: ['.vue', '.ts', '.js', '.json'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@@': path.resolve(__dirname),
@@ -29,17 +29,21 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        use: 'vue-loader',
+        loader: 'vue-loader',
       },
       {
         test: /(\.jsx|\.js)$/,
-        use: 'babel-loader',
+        loader: 'babel-loader',
         include: source,
         exclude: /node_modules/,
       },
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
       }
     ]
   },

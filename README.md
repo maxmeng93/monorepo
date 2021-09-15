@@ -6,7 +6,7 @@
 - [yarn](https://classic.yarnpkg.com/en/docs/workspaces) 默认包管理工具，使用了 workspaces 特性。
 - [webpack 5](https://webpack.docschina.org/) 文档网站开发、打包工具。
 
-## 介绍
+## 开始
 
 ```bash
 # 下载依赖包或生成本地软连接。等同于 lerna link + yarn install
@@ -23,6 +23,8 @@ lerna publish
 lerna add
 
 lerna clean
+
+yarn add -W xxxx # 安装依赖
 ```
 
 ## npm 包

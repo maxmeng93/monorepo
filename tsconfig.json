@@ -9,6 +9,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true, // 支持装饰器
     "outDir": "./dist",
     "paths": {
       "@/*": [ "src/*" ]
@@ -23,7 +24,8 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue", "src/main.ts",
+    "src/**/*.vue",
+    "src/*.ts",
   ],
   "exclude": [
     "node_modules"

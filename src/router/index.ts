@@ -6,7 +6,6 @@ Vue.use(Router);
 export const routes = [
   {
     path: '/',
-    // redirect: '/home',
     name: 'App',
     meta: {
       title: '主页',

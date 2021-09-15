@@ -1,3 +1,8 @@
 node_modules
+
 lib
 dist
+
+public
+
+webpack.config.js

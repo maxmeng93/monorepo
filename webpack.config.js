@@ -17,6 +17,7 @@ module.exports = {
       '@': path.resolve(__dirname, 'src'),
       '@@': path.resolve(__dirname),
       '@pkg': path.resolve(__dirname, 'packages'),
+      '@mono': path.resolve(__dirname, 'packages', '@mono'),
     },
   },
   devServer: {

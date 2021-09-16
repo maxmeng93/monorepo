@@ -1,7 +1,7 @@
 {
   "name": "@mono/demo",
   "version": "0.0.1",
-  "description": "这里是组件介绍",
+  "description": "组件demo",
   "main": "lib/index.js",
   "module": "index.ts",
   "typings": "index.d.ts",

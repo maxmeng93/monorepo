@@ -1,46 +1,77 @@
-# monorepo
+# Turborepo starter with pnpm
 
-## 技术栈
+This is an official starter turborepo.
 
-- [vue 2.x](https://cn.vuejs.org/v2/guide/)
-- [element-ui 2.x](https://element.eleme.cn/#/zh-CN)
-- [lerna](https://lerna.js.org/) 用于管理具有多个包的 JavaScript 项目的工具
-- [yarn](https://classic.yarnpkg.com/en/docs/workspaces) 默认包管理工具，使用了 workspaces 特性。
-- [webpack 5.x](https://webpack.docschina.org/) 文档网站开发、打包工具。
+## What's inside?
 
-## 开始
+This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes the following packages/apps:
 
-```bash
-# 下载依赖包或生成本地软连接。等同于 lerna link + yarn install
-lerna bootstrap
+### Apps and Packages
 
-lerna run
+- `docs`: a [Next.js](https://nextjs.org) app
+- `web`: another [Next.js](https://nextjs.org) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-lerna exec
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-# 发布代码有变动的 package
-lerna publish
+### Utilities
 
-# 将本地或远程的包作为依赖添加至当前仓库
-lerna add
+This turborepo has some additional tools already setup for you:
 
-lerna clean
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-yarn add -W xxxx # 安装依赖
+## Setup
+
+This repository is used in the `npx create-turbo@latest` command, and selected when choosing which package manager you wish to use with your monorepo (pnpm).
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm run build
 ```
 
-## 角色
+### Develop
 
-- 框架维护者
-  负责整体架构开发、维护，代码风格样式及组件微调。
-- 组件开发者
-  只能修改自己所负责的组件(或方法)目录，不应该修改任何超出自己负责范围的内容，也不应该随意引用自己文件夹以外的资源，所有外部资源必须以 npm 包的形式安装使用。
+To develop all apps and packages, run the following command:
 
-## 参考
+```
+cd my-turborepo
+pnpm run dev
+```
 
-[All in one：项目级 monorepo 策略最佳实践](https://segmentfault.com/a/1190000039157365)
-[基于 lerna 和 yarn workspace 的 monorepo 工作流](https://zhuanlan.zhihu.com/p/71385053)
+### Remote Caching
 
-## 测试
+Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-verdaccio： 测试 npm 包本地发布
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+
+```
+cd my-turborepo
+pnpx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+
+```
+pnpx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
+- [Caching](https://turborepo.org/docs/core-concepts/caching)
+- [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching)
+- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
+- [Configuration Options](https://turborepo.org/docs/reference/configuration)
+- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)

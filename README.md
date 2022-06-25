@@ -1,12 +1,40 @@
-# Turborepo starter with pnpm
+# monorepo
 
-This is an official starter turborepo.
+此 monorepo 架构基于 [thuborepo](https://turborepo.org/)、[pnpm](https://pnpm.io/)、[changesets](https://github.com/changesets/changesets)。
 
 ## What's inside?
 
-This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes the following packages/apps:
+这个项目使用 [pnpm](https://pnpm.io) 作为包管理工具。
 
-### Apps and Packages
+### 管理依赖
+
+要管理 monorepo 中工作空间内的依赖关系，您需要运行仅管理每个工作空间而不是整个 monorepo 的依赖关系的命令。
+
+- 安装
+```bash
+pnpm add <package> --filter <workspace>
+
+# eg:
+pnpm add react --filter docs
+```
+
+- 卸载
+```bash
+pnpm uninstall <package> --filter <workspace>
+
+# eg:
+pnpm uninstall react --filter web
+```
+
+- 更新
+```bash
+pnpm up <package> --filter <workspace>
+
+# eg:
+pnpm up react --filter web
+```
+
+### 应用程序和npm包
 
 - `docs`: a [Next.js](https://nextjs.org) app
 - `web`: another [Next.js](https://nextjs.org) app
@@ -14,60 +42,35 @@ This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes t
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This turborepo has some additional tools already setup for you:
+### 公共依赖
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 
-## Setup
+## 开始使用
 
-This repository is used in the `npx create-turbo@latest` command, and selected when choosing which package manager you wish to use with your monorepo (pnpm).
+### 构建
 
-### Build
-
-To build all apps and packages, run the following command:
+构建所有的应用程序和npm包
 
 ```
 cd my-turborepo
 pnpm run build
 ```
 
-### Develop
+### 开发
 
-To develop all apps and packages, run the following command:
+开发所有的应用程序和npm包
 
 ```
 cd my-turborepo
 pnpm run dev
 ```
 
-### Remote Caching
+## 其他
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-pnpx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-pnpx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
+学习 Turborepo 更多的使用方法：
 
 - [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
 - [Caching](https://turborepo.org/docs/core-concepts/caching)

@@ -7,7 +7,6 @@
     "packages/*"
   ],
   "scripts": {
-    "preinstall": "npx only_allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
@@ -20,14 +19,14 @@
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "^1.4.3"
   },
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "@changesets/cli": "^2.23.0"
+    "@changesets/cli": "^2.24.3"
   },
   "packageManager": "pnpm@7.3.0"
 }

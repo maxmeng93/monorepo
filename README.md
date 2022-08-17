@@ -1,46 +1,80 @@
 # monorepo
 
-## 技术栈
+此 monorepo 架构基于 [thuborepo](https://turborepo.org/)、[pnpm](https://pnpm.io/)、[changesets](https://github.com/changesets/changesets)。
 
-- [vue 2.x](https://cn.vuejs.org/v2/guide/)
-- [element-ui 2.x](https://element.eleme.cn/#/zh-CN)
-- [lerna](https://lerna.js.org/) 用于管理具有多个包的 JavaScript 项目的工具
-- [yarn](https://classic.yarnpkg.com/en/docs/workspaces) 默认包管理工具，使用了 workspaces 特性。
-- [webpack 5.x](https://webpack.docschina.org/) 文档网站开发、打包工具。
+## What's inside?
 
-## 开始
+这个项目使用 [pnpm](https://pnpm.io) 作为包管理工具。
 
+### 管理依赖
+
+要管理 monorepo 中工作空间内的依赖关系，您需要运行仅管理每个工作空间而不是整个 monorepo 的依赖关系的命令。
+
+- 安装
 ```bash
-# 下载依赖包或生成本地软连接。等同于 lerna link + yarn install
-lerna bootstrap
+pnpm add <package> --filter <workspace>
 
-lerna run
-
-lerna exec
-
-# 发布代码有变动的 package
-lerna publish
-
-# 将本地或远程的包作为依赖添加至当前仓库
-lerna add
-
-lerna clean
-
-yarn add -W xxxx # 安装依赖
+# eg:
+pnpm add react --filter docs
 ```
 
-## 角色
+- 卸载
+```bash
+pnpm uninstall <package> --filter <workspace>
 
-- 框架维护者
-  负责整体架构开发、维护，代码风格样式及组件微调。
-- 组件开发者
-  只能修改自己所负责的组件(或方法)目录，不应该修改任何超出自己负责范围的内容，也不应该随意引用自己文件夹以外的资源，所有外部资源必须以 npm 包的形式安装使用。
+# eg:
+pnpm uninstall react --filter web
+```
 
-## 参考
+- 更新
+```bash
+pnpm up <package> --filter <workspace>
 
-[All in one：项目级 monorepo 策略最佳实践](https://segmentfault.com/a/1190000039157365)
-[基于 lerna 和 yarn workspace 的 monorepo 工作流](https://zhuanlan.zhihu.com/p/71385053)
+# eg:
+pnpm up react --filter web
+```
 
-## 测试
+### 应用程序和npm包
 
-verdaccio： 测试 npm 包本地发布
+- `docs`: a [Next.js](https://nextjs.org) app
+- `web`: another [Next.js](https://nextjs.org) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+
+### 公共依赖
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+## 开始使用
+
+### 构建
+
+构建所有的应用程序和npm包
+
+```
+cd my-turborepo
+pnpm run build
+```
+
+### 开发
+
+开发所有的应用程序和npm包
+
+```
+cd my-turborepo
+pnpm run dev
+```
+
+## 其他
+
+学习 Turborepo 更多的使用方法：
+
+- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
+- [Caching](https://turborepo.org/docs/core-concepts/caching)
+- [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching)
+- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
+- [Configuration Options](https://turborepo.org/docs/reference/configuration)
+- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
